@@ -16,7 +16,6 @@ public class AccountUserControl {
     @Autowired
     AccountUserService userService;
 
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<AccountUser>> getAll(){

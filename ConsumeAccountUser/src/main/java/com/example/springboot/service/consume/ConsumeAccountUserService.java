@@ -26,7 +26,7 @@ public class ConsumeAccountUserService {
     @Autowired
     private AccountUserService userService;
 
-    private static String URL = "http://localhost:9090/api/account";
+    private static String URL = "http://localhost:9191/api/account";
 
 
     public Object callGet() throws IOException {

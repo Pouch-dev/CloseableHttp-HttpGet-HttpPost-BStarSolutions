@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -16,14 +17,14 @@ public class AccountUserControl {
     @Autowired
     AccountUserService userService;
 
-    @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @GetMapping
     public ResponseEntity<List<AccountUser>> getAll(){
         return ResponseEntity.ok().body(userService.findAll());
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/created")
     public ResponseEntity<AccountUser> createAccountUser(@RequestBody AccountUser user){
         return ResponseEntity.ok().body(userService.save(user));
     }

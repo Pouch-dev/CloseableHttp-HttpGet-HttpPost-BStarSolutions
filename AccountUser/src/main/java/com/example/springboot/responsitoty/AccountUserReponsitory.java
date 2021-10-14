@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface AccountUserReponsitory extends JpaRepository<AccountUser, Integer> {
 
 
+    Object getAll ( );
 }

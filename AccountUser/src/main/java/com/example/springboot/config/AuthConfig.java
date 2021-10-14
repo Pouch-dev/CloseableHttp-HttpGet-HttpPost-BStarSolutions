@@ -38,7 +38,7 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/account").hasRole("ADMIN")
+                .antMatchers("/api/account/**").hasRole("ADMIN")
 //                .antMatchers("/rest/category").hasAnyRole("ADMIN","USERS")
 //                .antMatchers("/book").permitAll()
                 .anyRequest().authenticated();

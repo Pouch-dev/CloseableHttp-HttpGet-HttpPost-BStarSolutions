@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 //@EnableScheduling
 public class AccountUserMain {
 
-    public static ConfigurableApplicationContext context;
+//    public static ConfigurableApplicationContext context;
 
     public static void main(String[] args) {
         SpringApplication.run(AccountUserMain.class, args);

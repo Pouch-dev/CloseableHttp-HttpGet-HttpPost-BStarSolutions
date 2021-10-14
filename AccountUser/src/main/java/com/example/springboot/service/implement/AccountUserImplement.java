@@ -33,4 +33,5 @@ public class AccountUserImplement implements AccountUserService {
     public void deleteById(Integer integer) {
         userReponsitory.deleteById(integer);
     }
+
 }

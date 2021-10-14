@@ -1,26 +1,5 @@
-[
   {
-    "id": 1,
-    "username": "DiemPhuoc",
-    "password": "123",
-    "fullname": "Quach Diem Phuoc"
-  },
-  {
-    "id": 2,
-    "username": "diemphuoc 1",
-    "password": "123",
-    "fullname": "Quach Diem Phuoc"
-  },
-  {
-    "id": 3,
-    "username": "diemphuoc 1",
-    "password": "123",
-    "fullname": "Quach Diem Phuoc"
-  },
-  {
-    "id": 4,
-    "username": "diemphuoc 3",
+    "username": "DiemPhuoc1",
     "password": "123",
     "fullname": "Quach Diem Phuoc"
   }
-]

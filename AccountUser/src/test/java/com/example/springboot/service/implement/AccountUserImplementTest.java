@@ -1,53 +1,46 @@
 package com.example.springboot.service.implement;
 
+import com.example.springboot.dto.response.AccountUserResponse;
 import com.example.springboot.entity.AccountUser;
-import com.example.springboot.responsitoty.AccountUserReponsitory;
-import org.junit.jupiter.api.Test;
+import com.example.springboot.utils.NotificationUtil;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.List;
-import java.util.Optional;
+import org.mockito.InjectMocks;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.MockitoAnnotations.initMocks;
+import static org.powermock.api.mockito.PowerMockito.*;
 
-@DataJpaTest
-class AccountUserImplementTest {
 
-    // TODO: 10/11/2021
-    @Autowired
-    private AccountUserReponsitory reponsitory;
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(NotificationUtil.class)
+public class AccountUserImplementTest {
 
-    private static final String DATABASE_SQL_SCRIPT = "testdbdata/AccountUser.sql";
+    @InjectMocks
+    private AccountUserImplement userImplement;
 
-    // TODO: 10/11/2021
-    @Test
-    public void findAll (){
-        List<AccountUser> findAllUser = reponsitory.findAll();
+    AccountUser accountUser = new AccountUser(1,"diemphuoc","123","Quach Diem Phuoc");
+
+    @Before
+    public void setup ( ){
+        initMocks(NotificationUtil.class);
     }
 
-    // TODO: 10/11/2021
     @Test
-    public void save (){
-        AccountUser account = reponsitory.save(new AccountUser(1,"DiemPhuoc 0","123","Quach Diem Phuoc"));
-        assertNotNull(account);
-        assertTrue(account.getId()>0);
+    public void createAccount ( ){
+        //Given
+        int id = 1;
+        String username = "diemphuoc";
+        String password = "123";
+        String fullname = "Quach Diem Phuoc";
+        mockStatic(NotificationUtil.class); // Noti.. bean fake
+        //When
+        when(NotificationUtil.createAccount(id,username,password,fullname)).thenReturn("success");
+        //Then
+        AccountUserResponse response = userImplement.createAccount(accountUser);
+        assertEquals("success",response.getMessage());
     }
-
-    // TODO: 10/11/2021
-    @Test
-    public void findById ( ){
-        Optional<AccountUser> findByIdUser = reponsitory.findById(2);
-    }
-
-    // TODO: 10/11/2021
-//    @Test
-//    public void deleteById ( ){
-//        reponsitory.deleteById(1);
-//    }
 }

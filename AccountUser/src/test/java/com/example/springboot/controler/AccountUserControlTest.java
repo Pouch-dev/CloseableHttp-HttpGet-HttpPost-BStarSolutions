@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class AccountUserControlTest extends AccountUserMainTest {
 
     @MockBean
-    AccountUserService userService;
+    private AccountUserService userService;
 
     @MockBean
     AccountUserReponsitory userReponsitory;
@@ -54,7 +54,7 @@ class AccountUserControlTest extends AccountUserMainTest {
         List<AccountUser> list = new ArrayList<>();
         list.add(new AccountUser(1,"DiemPhuoc01","123","Quach Diem Phuoc"));
         list.add(new AccountUser(2,"DiemPhuoc02","123","Quach Diem Phuoc"));
-        when(userService.findAll()).thenReturn(list);
+        when(userService.findAll()).thenReturn(list);// create method fake findAll
 
         Gson gson = new Gson();
         String json = gson.toJson(list);

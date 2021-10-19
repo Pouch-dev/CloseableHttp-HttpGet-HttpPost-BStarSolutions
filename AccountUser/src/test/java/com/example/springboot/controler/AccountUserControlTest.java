@@ -3,6 +3,7 @@ package com.example.springboot.controler;
 
 import com.example.springboot.AccountUserMainTest;
 import com.example.springboot.common.Utils;
+import com.example.springboot.dto.request.CreateAccountRequest;
 import com.example.springboot.entity.AccountUser;
 import com.example.springboot.responsitoty.AccountUserReponsitory;
 import com.example.springboot.service.AccountUserService;
@@ -16,6 +17,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
@@ -74,9 +76,8 @@ class AccountUserControlTest extends AccountUserMainTest {
     @Test
     @WithMockUser(username = "admin", roles = "ADMIN")
     public void testCreateAccountUser () throws Exception{
-
-        AccountUser mockData = new AccountUser(6, "diemphuoc01", "123", "Quach Diem Phuoc");
-        when(userService.save(any(AccountUser.class))).thenReturn(mockData);
+        AccountUser mockData = new AccountUser(6, "Diem phuoc 01", "123", "Quach Diem Phuoc");
+        when(userService.save(any(CreateAccountRequest.class))).thenReturn(mockData);
 
         // TODO: 10/13/2021 
         Gson gson = new Gson();
@@ -91,6 +92,7 @@ class AccountUserControlTest extends AccountUserMainTest {
                 .andDo(print())
                 .andExpect(status().is(200))
                 .andReturn().getResponse().getContentAsString();
+
 
         // TODO: 10/13/2021
             assertTrue(mvcResult.contains(json));
